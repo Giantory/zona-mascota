@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { FilterContext } from "../../views/Home";
+import { FilterContext } from "../../views/PetShop";
 import "./styles.sass";
 
 const Search = () => {
