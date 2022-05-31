@@ -1,0 +1,33 @@
+const mongoose = require('mongoose');
+const { Schema, model } = mongoose;
+
+const userSchema = new Schema({
+  email: {
+    type: String,
+    validate: {
+      validator: async function (email) {
+        const user = await this.constructor.findOne({ email });
+        if (user) {
+          if (this.id === user.id) {
+            return true;
+          }
+
+          return false;
+        }
+
+        return true;
+      },
+      message: 'The specified email address is already in use.',
+    },
+    match: [/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/, 'Please add a valid email'],
+    required: [true, 'User email required.'],
+    unique: true,
+  },
+  typeUser:{type: String, default: "client"},
+  password: { type: String, required: true, minlength: 6, select: false },
+  isActive: { type: Boolean, default: false },
+  activationToken: String,
+  
+});
+
+module.exports = model('User', userSchema);
