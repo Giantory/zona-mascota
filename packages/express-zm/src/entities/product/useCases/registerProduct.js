@@ -7,7 +7,6 @@ const registerProduct = async (body) => {
     const session = await mongoose.startSession();
     await session.withTransaction(async () => {
         await product.save({ session });
-
     });
     await session.endSession();
     return product;
