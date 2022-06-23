@@ -13,10 +13,9 @@ const ModalProductForm = ({ showProductForm }) => {
         e.preventDefault()
         console.log(product)     
         fetch('http://localhost:3001/api/products/registerProduct', {
-            method: 'POST',
-            
+            method: 'POST',            
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(product),
+            body: JSON.stringify(product)
         })
         .then(res =>{
             return res.json();
@@ -30,7 +29,7 @@ const ModalProductForm = ({ showProductForm }) => {
                 <div className="modal-product-left">
                     <div className="modal-product-left-photo"></div>
                     <div className="modal-product-left-upload">
-                        <input type="file" value={product.photo} onChange={(e)=>setProduct({...product, photo: e.target.value})} name="image" className="modal-product-left-upload-input" ref={previewPhoto} />
+                        <input type="file" onChange={(e)=>setProduct({...product, photo: e.target.files[0]})} name="image" className="modal-product-left-upload-input" ref={previewPhoto} />
                         <button className="modal-product-left-upload-button" onClick={openBrowser}>
                             <svg className="modal-product-left-upload-button-icon-svg" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-upload" viewBox="0 0 16 16">
                                 <path className="modal-product-left-upload-button-icon-svg-path" d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z" />
