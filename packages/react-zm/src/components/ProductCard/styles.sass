@@ -6,12 +6,17 @@
     position: relative
     overflow: visible
     box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)
-    .card-img 
-        background-color: #999999
+    &-img 
+        display: flex
+        align-items: center
+        justify-content: center
         height: 40%
         width: 100%
-        
-    .card-info 
+        &-src
+            padding: 10px
+            max-width: 100%   
+            max-height: 100%
+    &-info 
         padding-top: 10%
         &-title 
             font-family: 'Open Sans', sans-serif
@@ -22,7 +27,7 @@
             font-family: 'Open Sans', sans-serif
             font-size: .9em
             padding-bottom: 8px
-    .card-footer 
+    &-footer 
         width: 100%
         display: flex
         justify-content: space-between
