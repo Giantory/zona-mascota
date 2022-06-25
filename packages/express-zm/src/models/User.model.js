@@ -23,7 +23,7 @@ const userSchema = new Schema({
     required: [true, 'User email required.'],
     unique: true,
   },
-  typeUser:{type: String, default: "client"},
+  typeUser:{type: String, default: "client"},   
   password: { type: String, required: true, minlength: 6, select: false },
   isActive: { type: Boolean, default: false },
   activationToken: String,

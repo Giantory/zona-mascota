@@ -6,10 +6,30 @@ const productSchema = new Schema({
         type: String,
         required: true
     },
-    price: {
+    category: {
+        type: String,
+        required: true
+    },
+    photo: {
+        type: String,
+        required: true
+    },
+    unit:{
+        type: String,
+        required: true 
+    },
+    stock: {
+        type: Number,
+        required: true   
+    },
+    purchasePrice: {
         type: Number,
         required: true
-    }
+    },
+    salePrice: {
+        type: Number,
+        required: true
+    }   
 })
 
 module.exports = model('Product', productSchema);
