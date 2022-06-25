@@ -3,7 +3,7 @@ const multer = require("multer");
 const path = require('path')
 
 //controllers
-const { postProduct } = require("./controllers");
+const { postProduct, getProducts } = require("./controllers");
 
 const router = Router();
 const storage = multer.diskStorage({
@@ -22,5 +22,9 @@ router.post(
   upload.single("productImg"),
   postProduct
 );
+router.get(
+  `/api/products/findAllProducts`,
+  getProducts
+)
 
 module.exports = router;
