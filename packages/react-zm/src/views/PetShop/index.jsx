@@ -20,6 +20,20 @@ function PetShop() {
 
     const [productCounter, setProductCounter] = useState(0);
     const [openModalShopCart, setOpenModalShopCart] = useState(false);
+    const [products, setProducts] = useState([])//list of products
+
+    useEffect(() => {
+        fetch('http://localhost:3001/api/products/findAllProducts', {
+          method: 'GET',
+          headers: { 'Content-Type': 'application/json' },
+        })
+          .then(res => {
+            return res.json();
+          })
+          .then(response =>  {
+            console.log(response.data.products)
+            setProducts(response.data.products)})
+      }, [])
 
 
     return (
@@ -41,17 +55,9 @@ function PetShop() {
                         <main className="petshop-main">
                             <div className="petshop-main-products">
                                 <div className="petshop-main-products-product">
-                                    <ProductCard />
-                                    <ProductCard />
-                                    <ProductCard />
-                                    <ProductCard />
-                                    <ProductCard />
-                                    <ProductCard />
-                                    <ProductCard />
-                                    <ProductCard />
-                                    <ProductCard />
-                                    <ProductCard />
-                                    <ProductCard />
+                                    {products.map((product)=>{
+                                        return <ProductCard key={product._id} product={product}/>
+                                    })}
                                 </div>
                                 {openModalShopCart && <ModalShopCart closeModalShopCart={setOpenModalShopCart} />}
                             </div>

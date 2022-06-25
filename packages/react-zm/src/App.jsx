@@ -49,7 +49,7 @@ function App() {
         },
     ];
 
-    const isAdmin =true; //is not a feature
+    const isAdmin =false; //is not a feature
     return (
         <div className="App">
             {isAdmin &&
