@@ -7,7 +7,7 @@ const PORT = process.env.PORT;
 const connectCloudinary = require('./src/config/cloudinary')
 
 connectToDb();
-connectCloudinary();
+
 
 app.listen(PORT, () => {
     console.log(`App listening on ${PORT}`);

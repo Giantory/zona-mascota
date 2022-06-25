@@ -1,5 +1,6 @@
 const { Router } = require("express");
 const multer = require("multer");
+const path = require('path')
 
 //controllers
 const { postProduct } = require("./controllers");
@@ -10,7 +11,7 @@ const storage = multer.diskStorage({
   filename: function (req, file, cb) {
     cb(
       null,
-      file.fieldname + "-" + Date.now() + path.extname(file.originalname)
+      file.originalname + "-" + Date.now() + path.extname(file.originalname)
     );
   },
 });
@@ -18,7 +19,7 @@ const upload = multer({ storage: storage });
 
 router.post(
   `/api/products/registerProduct`,
-  upload.single("image"),
+  upload.single("productImg"),
   postProduct
 );
 

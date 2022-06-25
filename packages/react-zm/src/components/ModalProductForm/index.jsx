@@ -3,6 +3,7 @@ import { useRef, useState } from 'react';
 import './styles.sass'
 const ModalProductForm = ({ showProductForm }) => {
     const [product, setProduct] = useState({});
+    const [productImg, setProductImg] = useState();
 
     const previewPhoto = useRef(null);
 
@@ -11,14 +12,24 @@ const ModalProductForm = ({ showProductForm }) => {
     };
     const registerProduct = (e) => {
         e.preventDefault()
-        console.log(product)     
+        const formData = new FormData();
+
+        formData.append('description', product.description);
+        formData.append('category', product.category);
+        formData.append('unit', product.unit);
+        formData.append('stock', product.stock);
+        formData.append('purchasePrice', product.purchasePrice);
+        formData.append('salePrice', product.salePrice);
+        formData.append('productImg', productImg)
+
+        console.log(product)   
+        console.log("foto",productImg)  
         fetch('http://localhost:3001/api/products/registerProduct', {
             method: 'POST',            
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(product)
+            body: formData
         })
         .then(res =>{
-            return res.json();
+            return res;
         })
         .then(response =>{ console.log(response)})
     }
@@ -29,7 +40,7 @@ const ModalProductForm = ({ showProductForm }) => {
                 <div className="modal-product-left">
                     <div className="modal-product-left-photo"></div>
                     <div className="modal-product-left-upload">
-                        <input type="file" onChange={(e)=>setProduct({...product, photo: e.target.files[0]})} name="image" className="modal-product-left-upload-input" ref={previewPhoto} />
+                        <input type="file" onChange={(e)=>setProductImg(e.target.files[0])} name="image" className="modal-product-left-upload-input" ref={previewPhoto} />
                         <button className="modal-product-left-upload-button" onClick={openBrowser}>
                             <svg className="modal-product-left-upload-button-icon-svg" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-upload" viewBox="0 0 16 16">
                                 <path className="modal-product-left-upload-button-icon-svg-path" d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z" />
