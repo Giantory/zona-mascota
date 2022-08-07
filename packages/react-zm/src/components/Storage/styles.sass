@@ -1,78 +1,84 @@
 .storage
     display: flex
     justify-content: center
-    &-tbl        
+    flex-direction: column
+    width: 1150px
+    &-header
+        display: grid
+        grid-template-columns: 2fr repeat(9, 1fr)
+        grid-template-rows: 1fr
+        grid-column-gap: 0px
+        grid-row-gap: 0px
         width: 100%
-        border-collapse: collapse         
-        &-items
-            background-color: #3D69C0
-            border-radius: 30px
-            &-item
-                color: white
-                padding: 5px
-                font-family: 'Open Sans', sans-serif
-                font-size: 18px
-                font-weight: 400
-        &-product  
+        background-color: #3D69C0
+        &-item
+            display: flex
+            justify-content: center
+            align-items: center
+            color: white
+            padding: 5px
             font-family: 'Open Sans', sans-serif
-            text-align: center
-            vertical-align: middle
-            font-size: 15px
-            &-row
-                &-image
-                    padding: 15px
-                    &-img
-                        padding: 10px
-                        max-width: 100%
-                        height: 30px
-                        border: 1px solid #dee2e6
-                        border-radius: 5px
-                &-name
-                &-category
-                &-stock
-                &-pricebuy
-                &-pricesell
-                &-status
-                    width: 100px
-                &-button-update 
-                    padding: 0px
-                    &-button
-                        display: flex
-                        align-items: center
-                        justify-content: center
-                        background-color: #33A53F
-                        border-radius: 5px
-                        width: 75px
-                        height: 25px
-                        padding: 2px
-                        &-icon
-                            display: flex
-                            align-items: center
-                            &-svg
-                                width: 3.5rem
-                                height: 3.5rem
-                                &-path
-                                    fill: white
-                        &-text
-                            font-size: 13px
-                            margin: 0px 5px
-                            color: white
-                &-button-delete 
-                        &-button
-                            display: flex
-                            align-items: center
-                            justify-content: center
-                            border-radius: 5px
-                            width: 45px
-                            height: 25px
-                            padding: 2px
-                            &-icon
-                                display: flex
-                                align-items: center
-                                &-svg
-                                    width: 4rem
-                                    height: 4rem
-                                    &-path
-                                        fill: red
+            font-size: 13px
+            font-weight: 800
+    &-body
+        width: 100%
+        &-product
+            display: grid
+            grid-template-columns: 2fr repeat(9, 1fr)
+            grid-template-rows: 1fr
+            grid-column-gap: 0px
+            grid-row-gap: 0px
+            margin: 5px 0px
+            &-id
+                display: flex
+                justify-content: center
+                align-items: center
+            &-photo
+                display: flex
+                justify-content: center
+                align-items: center 
+                &-img
+                    padding: 10px
+                    max-width: 25px
+                    height: 25px
+                    border: 1px solid #dee2e6
+                    border-radius: 5px
+            &-description
+                display: flex
+                font-family: 'Open Sans', sans-serif
+                justify-content: center
+                align-items: center 
+            &-category
+                display: flex
+                font-family: 'Open Sans', sans-serif
+                justify-content: center
+                align-items: center 
+            &-unit
+                display: flex
+                font-family: 'Open Sans', sans-serif
+                justify-content: center
+                align-items: center 
+            &-stock
+                display: flex
+                font-family: 'Open Sans', sans-serif
+                justify-content: center
+                align-items: center 
+            &-purchasePrice
+                display: flex
+                font-family: 'Open Sans', sans-serif
+                justify-content: center
+                align-items: center 
+            &-salePrice
+                display: flex
+                font-family: 'Open Sans', sans-serif
+                justify-content: center
+                align-items: center 
+            &-status
+                display: flex
+                font-family: 'Open Sans', sans-serif
+                justify-content: center
+                align-items: center 
+    
+    
 
                             

@@ -1,5 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import React, { useState } from "react";
+import { Elements } from '@stripe/react-stripe-js';
+import { loadStripe } from '@stripe/stripe-js';
 
 //views
 import Home from "./views/PetShop";
@@ -9,6 +11,7 @@ import MyPets from "./views/MyPets";
 import PetShop from "./views/PetShop";
 import Products from "./views/Products";
 import Clients from "./views/Clients";
+import Checkout from "./views/Checkout";
 
 
 
@@ -18,10 +21,9 @@ import './App.sass'
 
 //context
 export const isSelectedContext = React.createContext({});
-
-
-
 function App() {
+
+    const stripePromise = loadStripe('pk_test_51LTG0ZCyW6WAA5WT4TAiAOBMMWKwQltI3M7rPpV9u4jCegEpfLengeWMtFwAcTsWFv4JYstFzPkQffjPO8DXlvbV00KSvjWDRd');
 
     const [adminOptionSelected, setAdminOptionSelected] = useState(1);
     const isSelected = (option) => {
@@ -49,8 +51,9 @@ function App() {
         },
     ];
 
-    const isAdmin =false; //is not a feature
+    const isAdmin =true; //is not a feature
     return (
+        <Elements stripe={stripePromise}>
         <div className="App">
             {isAdmin &&
                 <isSelectedContext.Provider value={{ isSelected, adminOptionSelected, setAdminOptionSelected }}>
@@ -65,11 +68,12 @@ function App() {
                     <Route path='/petshop' element={<PetShop />} />
                     <Route path='/myappointments' element={<MyAppointments />} />
                     <Route path='/mypets' element={<MyPets />} />
+                    <Route path='/checkout' element={<Checkout />} />
                     <Route path='/admin-products' element={<Products />} />
                     <Route path='/admin-clients' element={<Clients />} />
                 </Routes>
             </main>
-
         </div>
+        </Elements>
     )
 } export default App;

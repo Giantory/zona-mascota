@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { isSelectedContext } from '../../App';
+import Logo from "../../assets/img/Logo.png"
 import './styles.sass';
 const Sidebar = ({ options }) => {
     const { isSelected ,adminOptionSelected, setAdminOptionSelected } = useContext(isSelectedContext);
@@ -8,7 +9,7 @@ const Sidebar = ({ options }) => {
     return (
         <div className='sidebar'>
             <div className="sidebar-header">
-                <img className="sidebar-header-logo" />
+                <img className="sidebar-header-logo" src={Logo}/>
                 <h1 className="sidebar-header-tittle">Administrador</h1>
             </div>
             <div className="sidebar-separator"></div>
