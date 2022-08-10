@@ -27,7 +27,7 @@ function Checkout() {
 
         if (!error) {
             console.log(paymentMethod);
-            fetch('http://localhost:3001/api/checkout', {
+            fetch('https://zona-mascota-backend.herokuapp.com/api/checkout', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({

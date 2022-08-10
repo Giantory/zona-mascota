@@ -8,7 +8,7 @@ const LoggedNavbar = ({ token }) => {
     const navigate = useNavigate()
 
     useEffect(() => {
-        fetch(`http://localhost:3001/api/client/getClient/${token.data.id}`, {
+        fetch(`https://zona-mascota-backend.herokuapp.com/api/client/getClient/${token.data.id}`, {
             method: 'GET',
             headers: { 'Content-Type': 'application/json' },
         })

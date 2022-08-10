@@ -24,7 +24,7 @@ const ModalProductForm = ({ showProductForm }) => {
 
         console.log(product)   
         console.log("foto",productImg)  
-        fetch('http://localhost:3001/api/products/registerProduct', {
+        fetch('https://zona-mascota-backend.herokuapp.com/api/products/registerProduct', {
             method: 'POST',            
             body: formData
         })

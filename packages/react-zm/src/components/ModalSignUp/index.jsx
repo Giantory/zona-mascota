@@ -10,7 +10,7 @@ const ModalSignUp = ({closeModalSignUp}) => {
     const handleSignup = (e) =>{
         e.preventDefault();    
 
-        fetch('http://localhost:3001/api/user/signup', {
+        fetch('https://zona-mascota-backend.herokuapp.com/api/user/signup', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(newUser)

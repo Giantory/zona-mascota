@@ -29,7 +29,7 @@ function PetShop() {
 
     
     useEffect(() => {        
-        fetch('http://localhost:3001/api/products/findAllProducts', {
+        fetch('https://zona-mascota-backend.herokuapp.com/api/products/findAllProducts', {
             method: 'GET',
             headers: { 'Content-Type': 'application/json' },
         })
