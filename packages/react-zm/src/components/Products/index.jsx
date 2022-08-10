@@ -1,5 +1,6 @@
-import Storage from "../../components/Storage";
-import ModalProductForm from "../../components/ModalProductForm";
+import Storage from "../Storage";
+import Sidebar from "../Sidebar";
+import ModalProductForm from "../ModalProductForm";
 import {useState} from "react";
 
 import './styles.sass'
@@ -20,7 +21,6 @@ function Products() {
                 <Storage showProductForm={setOpenProductForm}/>
                 {openProductForm && <ModalProductForm showProductForm={setOpenProductForm}/>}
             </div>
-
         </div>
     )
 }
