@@ -1,12 +1,12 @@
 {
   "name": "express-zm",
   "version": "1.0.0",
-  "description": "zm-backend",
-  "main": "index.js",
   "engines": {
     "node": "16.x",
     "npm": "8.x"
   },
+  "description": "zm-backend",
+  "main": "index.js",
   "scripts": {
     "start:dev": "nodemon index",
     "test": "echo \"Error: no test specified\" && exit 1"
