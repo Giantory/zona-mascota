@@ -5,6 +5,7 @@ import ProductCard from "../../components/ProductCard";
 import Search from "../../components/Search";
 import ModalShopCart from "../../components/ModalShopCart";
 import CartButton from "../../components/CartButton";
+import ModalSignUp from "../../components/ModalSignUp";
 import './styles.sass'
 
 export const FilterContext = React.createContext({});
@@ -20,12 +21,14 @@ function PetShop() {
     });
    
     const [openModalShopCart, setOpenModalShopCart] = useState(false);
+    const [openModalSignUp, setOpenModalSignUp] = useState(false);
     const [cartShopList, setCartShopList] = useState([]);//list of cartshop
     const [products, setProducts] = useState([])//list of products
     const [productCounter, setProductCounter] = useState(0);
+    let token = JSON.parse(localStorage.getItem("userLogged"));
 
     
-    useEffect(() => {
+    useEffect(() => {        
         fetch('http://localhost:3001/api/products/findAllProducts', {
             method: 'GET',
             headers: { 'Content-Type': 'application/json' },
@@ -37,7 +40,7 @@ function PetShop() {
                 setProducts(response.data.products)
             })
     }, [])
-
+    console.log(token)
 
     return (
         <>
@@ -47,15 +50,12 @@ function PetShop() {
                         value={{ selectedFilter, setFilter, renderBy, setRenderBy }}
                     >
                         <div className='petshop'>
-
-                            <NoLoggedNavbar />
+                            {token ? <LoggedNavbar token={token} /> : <NoLoggedNavbar closeModalSignUp={setOpenModalSignUp} />}                            
                             <hr />
-
                             <h1 className="petshop-tittle">Nuestros productos</h1>
                             <div className="petshop-search">
                                 {/* <Search /> */}
                             </div>
-
                             <main className="petshop-main">
                                 <div className="petshop-main-products">
                                     <div className="petshop-main-products-product">
@@ -66,6 +66,7 @@ function PetShop() {
                                     {openModalShopCart && <ModalShopCart closeModalShopCart={setOpenModalShopCart} />}
                                 </div>
                             </main>
+                            {openModalSignUp && <ModalSignUp closeModalSignUp={setOpenModalSignUp} />}
                         </div>
                         <div className="cart-button-container" onClick={() => { setOpenModalShopCart(true) }}>
                             <CartButton productCounter={productCounter} />

@@ -1,9 +1,18 @@
+import { Link } from "react-router-dom"
+import Logo from "../../assets/img/Logo.png"
 import './styles.sass'
-const NoLoggedNavbar = () => {
+
+const NoLoggedNavbar = ({ closeModalSignUp }) => {
+    
     return (
         <div className="nologged-navbar">
-            <p className="nologged-navbar-text">¿Quieres agender una cita?</p> 
-            <button className="nologged-navbar-button">Crear una cuenta</button>
+            <Link to={"/"}>
+            <div className="nologged-navbar-logo">
+                <img src={Logo} className="nologged-navbar-logo-img" />
+            </div>
+            </Link>
+            <p className="nologged-navbar-message">¿Quieres agender una cita?</p> 
+            <button className="nologged-navbar-register" onClick={() => { closeModalSignUp(true) }}>Crear una cuenta</button>
         </div>
     )
 }

@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const { Schema, model } = mongoose;
+const { compare } = require("bcrypt");
 
 const userSchema = new Schema({
   email: {
@@ -24,10 +25,13 @@ const userSchema = new Schema({
     unique: true,
   },
   typeUser:{type: String, default: "client"},   
-  password: { type: String, required: true, minlength: 6, select: false },
-  isActive: { type: Boolean, default: false },
-  activationToken: String,
-  
+  password: { type: String, required: true, minlength: 6}
+
+   
 });
+
+userSchema.methods.verifyPassword = function verifyPassword(password) {
+  return compare(password, this.password);
+}
 
 module.exports = model('User', userSchema);

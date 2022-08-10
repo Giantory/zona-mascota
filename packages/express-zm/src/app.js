@@ -3,9 +3,10 @@ const cors = require('cors');
 
 
 //import routes
-const productRoutes = require('./entities/product/product.routes')
-const userRoutes = require('./entities/user/user.routes')
-const paymentRoutes = require('./entities/payment/payment.routes')
+const productRoutes = require('./entities/product/product.routes');
+const userRoutes = require('./entities/user/user.routes');
+const clientRoutes = require('./entities/client/client.routes');
+const paymentRoutes = require('./entities/payment/payment.routes');
 
 
 const app = express();
@@ -20,6 +21,7 @@ app.use(cors({
 
 app.use(productRoutes);
 app.use(userRoutes);
+app.use(clientRoutes);
 app.use(paymentRoutes);
 
 module.exports = app;
